@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven'
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -12,15 +16,6 @@ pipeline {
             steps {
                 sh 'mvn test'
             }
-        }
-    }
-
-    post {
-        success {
-            echo 'Pipeline SUCCESS'
-        }
-        failure {
-            echo 'Pipeline FAILED'
         }
     }
 }
